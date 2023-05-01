@@ -1,0 +1,49 @@
+//Here is the contents of the Makefile we just created:
+
+program: program.o weatherstats.o
+	gcc -std=c11 -Wall -fmax-errors=10 -Wextra program.o weatherstats.o -o program
+	
+program.o: program.c weatherstats.h
+	gcc -std=c11 -Wall -fmax-errors=10 -Wextra -c program.c -o program.o
+	
+weatherstats.o: weatherstats.c
+	gcc -std=c11 -Wall -fmax-errors=10 -Wextra -c weatherstats.c -o weatherstats.o
+//Be sure to have this Makefile as well as the files program.c, weatherstats.c and weatherstats.h all present in the same folder in your weblinux. Recall that all of the indentations in the Makefile need to be created via the "tab" key, not via spaces. Sometimes copying and pasting will replace tabs with spaces so you may need to fix this.
+
+//In case you need the contents of the latter three files, you can find them below the video. If you haven't yet, run
+
+make program
+
+//Be sure that you can execute the program by typing
+
+./program
+
+====================================================================================
+program: program.o weatherstats.o
+	gcc -std=c11 -Wall -fmax-errors=10 -Wextra program.o weatherstats.o -o program
+	
+program.o: program.c weatherstats.h
+	gcc -std=c11 -Wall -fmax-errors=10 -Wextra -c program.c -o program.o
+	
+weatherstats.o: weatherstats.c
+	gcc -std=c11 -Wall -fmax-errors=10 -Wextra -c weatherstats.c -o weatherstats.o
+launch: program
+	./program
+clean:
+	rm -f weatherstats.o program.o program
+	
+/`how to execute: make launch and make clean
+
+==========================================IF WE HAVE A LIBRARY CREATED============================
+program: program.o
+	gcc -std=c11 -Wall -fmax-errors=10 -Wextra program.o _L. -lweather -o program
+	
+program.o: program.c
+	gcc -std=c11 -Wall -fmax-errors=10 -Wextra -c program.c -o program.o
+	
+launch: program
+	./program
+clean:
+	rm -f weatherstats.o program.o program
+	
+/`how to execute: make launch and make clean
